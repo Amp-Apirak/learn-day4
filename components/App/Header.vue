@@ -73,14 +73,14 @@ onUnmounted(() => {
             to="/categories"
             class="px-4 py-2 rounded-full w-full sm:w-auto text-white hover:text-gray-200 hover:bg-skin-fill-hover transition duration-200 font-medium"
             exact-active-class="bg-skin-fill-active text-skin-active"
-            >Categories</NuxtLink
+            >Service</NuxtLink
           >
           <!-- ลิงก์หน้า Blog -->
           <NuxtLink
             to="/blog"
             class="px-4 py-2 rounded-full w-full sm:w-auto text-white hover:text-gray-200 hover:bg-skin-fill-hover transition duration-200 font-medium"
             exact-active-class="bg-skin-fill-active text-skin-active"
-            >Blog</NuxtLink
+            >Product</NuxtLink
           >
           <!-- ลิงก์หน้า Contact -->
           <NuxtLink
