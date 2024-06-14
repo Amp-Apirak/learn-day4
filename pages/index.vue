@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 // สร้างตัวแปร stats สำหรับเก็บข้อมูลสถิติ พร้อม URL ของภาพ
 const stats = [
-  { id: 1, name: 'ให้ความสำคัญกับคนในครอบครัว..', value: '44 million', imageUrl: 'https://s3vmwebprd.s3.ap-southeast-1.amazonaws.com/public/services/AWawcQ1w2eGh6ONJftM9wD3FZy23DGJdf9UP8uHY.png' },
-  { id: 2, name: 'ใส่ใจดูแล….ผู้สูงอายุ', value: '$119 trillion', imageUrl: 'https://www.synphaet.co.th/wp-content/uploads/2022/04/101560185_xl-scaled.jpg' },
-  { id: 3, name: 'สร้างรอยยิ้มและความสุดใส่..', value: '46,000', imageUrl: 'https://cdn-cms.pgimgs.com/static/2021/01/Change-House-for-Elder.jpg' },
+  { id: 1, name: 'ให้ความสำคัญกับคนในครอบครัว..', value: '44 million', imageUrl: 'https://s3vmwebprd.s3.ap-southeast-1.amazonaws.com/public/services/AWawcQ1w2eGh6ONJftM9wD3FZy23DGJdf9UP8uHY.png', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
+  { id: 2, name: 'ใส่ใจดูแล….ผู้สูงอายุ', value: '$119 trillion', imageUrl: 'https://www.synphaet.co.th/wp-content/uploads/2022/04/101560185_xl-scaled.jpg', description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' },
+  { id: 3, name: 'สร้างรอยยิ้มและความสุดใส่..', value: '46,000', imageUrl: 'https://cdn-cms.pgimgs.com/static/2021/01/Change-House-for-Elder.jpg', description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' },
 ];
 
 // กำหนด meta tags และ title ของหน้า
@@ -23,18 +23,26 @@ useHead({
 </script>
 
 <template>
-    <div class="bg-white py-24 sm:py-32">
+  <div class="bg-white py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
-        <div v-for="stat in stats" :key="stat.id" class="mx-auto flex max-w-xs flex-col gap-y-4">
-          <dt class="text-base leading-7 text-gray-600">{{ stat.name }}</dt>
-          <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-            <img :src="stat.imageUrl" :alt="stat.name" class="stat-image mx-auto rounded-lg" />
-          </dd>
+        <div v-for="stat in stats" :key="stat.id" class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col max-w-md mx-auto">
+          <img :src="stat.imageUrl" :alt="stat.name" class="h-64 w-full object-cover"/>
+          <div class="p-6">
+            <dt class="text-lg font-medium text-gray-900">{{ stat.name }}</dt>
+            <dd class="mt-2 text-base text-gray-600 line-clamp-2">{{ stat.description }}</dd>
+            <a href="#" class="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-900">
+              Read more
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
         </div>
       </dl>
     </div>
   </div>
+
   <!-- Box 1 -->
   <section class="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
     <div class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
@@ -94,7 +102,7 @@ useHead({
   </div>
 
   <!-- Box 3 -->
-  <div class="bg-white py-24 sm:py-32">
+  <div class="bg-white py-24 sm:py-32 ">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
         <div v-for="stat in stats" :key="stat.id" class="mx-auto flex max-w-xs flex-col gap-y-4">
