@@ -1,6 +1,22 @@
 <script lang="ts" setup>
   // กำหนดตัวแปร isOpen เป็น reactive reference เพื่อควบคุมการเปิด/ปิดเมนู
-  const isOpen = ref(false)
+  const isOpen = ref(false);
+
+  // ฟังก์ชันปิดเมนูเมื่อขนาดหน้าจอเปลี่ยนแปลง
+  const handleResize = () => {
+    if (window.innerWidth >= 640) {
+      isOpen.value = false;
+    }
+  };
+
+  // เพิ่ม event listener สำหรับการเปลี่ยนแปลงขนาดหน้าจอ
+  onMounted(() => {
+    window.addEventListener('resize', handleResize);
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', handleResize);
+  });
 </script>
 
 <template>
@@ -40,7 +56,7 @@
       </button>
 
       <!-- เมนู -->
-      <div :class="isOpen ? 'fixed sm:relative top-16 shadow sm:shadow-none left-4 right-4 rounded-lg overflow-hidden bg-white sm:bg-transparent py-2':'hidden sm:flex sm:w-6/12'">
+      <div :class="isOpen ? 'fixed sm:relative top-16 shadow sm:shadow-none left-4 right-4 rounded-lg overflow-hidden bg-blue-500 sm:bg-transparent py-2':'hidden sm:flex sm:w-6/12'">
         <!-- นำทางลิงก์เมนู -->
         <nav class="
           flex flex-col
